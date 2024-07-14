@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/editor/run")
 public class RunController {
     @GetMapping("")
-    String home (){
+    String home() {
         return "Run API";
     }
 
