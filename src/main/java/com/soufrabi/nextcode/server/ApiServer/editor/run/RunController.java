@@ -9,20 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/editor/run")
 public class RunController {
+    private final RunService runService;
+
+    RunController(RunService runService) {
+        this.runService = runService;
+    }
+
     @GetMapping("")
     String home() {
         return "Run API";
     }
 
     @PostMapping("")
-    RunResponse post(@RequestBody RunRequest runRequest ){
-        return new RunResponse(
-                "",
-                "Stub",
-                "Current Time : " + java.time.LocalDateTime.now().toString(),
-                "0ms",
-                true,
-                "INTERNAL_SERVER_ERROR"
-        );
+    RunResponse post(@RequestBody RunRequest runRequest) {
+        try {
+            return runService.run(runRequest);
+        } catch (Exception e) {
+            return new RunResponse(
+                    "",
+                    "",
+                    "Current Time : " + java.time.LocalDateTime.now().toString(),
+                    "0ms",
+                    true,
+                    "INTERNAL_SERVER_ERROR"
+            );
+        }
     }
 }
