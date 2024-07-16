@@ -1,6 +1,7 @@
 package com.soufrabi.nextcode.server.ApiServer.editor.run;
 
 public record RunRceeRequest(
+        Integer languageId,
         String sourceCode,
         String stdin,
         Integer cpuTimeLimit,

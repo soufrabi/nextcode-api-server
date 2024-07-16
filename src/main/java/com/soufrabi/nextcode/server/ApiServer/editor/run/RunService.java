@@ -17,6 +17,7 @@ public class RunService {
 
     RunResponse run(RunRequest runRequest) {
         RunRceeRequest runRceeRequest = new RunRceeRequest(
+                runRequest.languageId(),
                 runRequest.sourceCode(),
                 runRequest.inputText(),
                 1_000,
