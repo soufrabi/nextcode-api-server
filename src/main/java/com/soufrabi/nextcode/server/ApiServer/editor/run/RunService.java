@@ -40,7 +40,7 @@ public class RunService {
                 runRceeResponse.stdout(),
                 runRceeResponse.stderr(),
                 "",
-                "0ms",
+                runRceeResponse.time() + "/" + runRceeResponse.wallTime(),
                 false,
                 ""
         );
