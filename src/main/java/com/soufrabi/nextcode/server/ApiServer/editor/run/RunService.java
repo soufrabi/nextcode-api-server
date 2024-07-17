@@ -20,7 +20,7 @@ public class RunService {
                 runRequest.languageId(),
                 runRequest.sourceCode(),
                 runRequest.inputText(),
-                1_000,
+                runRequest.executionTimeLimit(),
                 0,
                 0,
                 10,
