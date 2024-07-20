@@ -41,7 +41,7 @@ public class RunService {
                 runRceeResponse.stderr(),
                 "",
                 runRceeResponse.time() + "/" + runRceeResponse.wallTime(),
-                false,
+                !runRceeResponse.exitCode().equals("0"),
                 ""
         );
     }
