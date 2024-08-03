@@ -20,4 +20,4 @@ Docker image hosted at : <https://hub.docker.com/r/soufrabidev/nextcode-api-serv
 : ,eg, mysqluser
 - DATASOURCE_PASSWORD
 - RCEE_BASEURL
-: base url of the remote code execution engine <https://github.com/soufabi/nextcode-rcee-isolate/>
+: base url of the remote code execution engine <https://github.com/soufrabi/nextcode-rcee-isolate/>
