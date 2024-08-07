@@ -1,22 +1,20 @@
 package com.soufrabi.nextcode.server.ApiServer.editor.run;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
+import com.soufrabi.nextcode.server.ApiServer.rcee.RceeRequest;
+import com.soufrabi.nextcode.server.ApiServer.rcee.RceeResponse;
+import com.soufrabi.nextcode.server.ApiServer.rcee.RceeService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
 
 @Service
 public class RunService {
-    private final RestClient restClient;
+    private final RceeService rceeService;
 
-    RunService(@Value("${rcee.baseurl}") String rceeBaseUrl) {
-        restClient = RestClient.builder()
-                .baseUrl(rceeBaseUrl).
-                build();
+    RunService(RceeService rceeService) {
+        this.rceeService = rceeService;
     }
 
     RunResponse run(RunRequest runRequest) {
-        RunRceeRequest runRceeRequest = new RunRceeRequest(
+        RceeRequest rceeRequest = new RceeRequest(
                 runRequest.languageId(),
                 runRequest.sourceCode(),
                 runRequest.inputText(),
@@ -29,19 +27,14 @@ public class RunService {
                 1_000
         );
 
-        RunRceeResponse runRceeResponse = restClient.post()
-                .uri("/run")
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(runRceeRequest)
-                .retrieve()
-                .body(RunRceeResponse.class);
+        RceeResponse rceeResponse = rceeService.run(rceeRequest);
 
         return new RunResponse(
-                runRceeResponse.stdout(),
-                runRceeResponse.stderr(),
+                rceeResponse.stdout(),
+                rceeResponse.stderr(),
                 "",
-                runRceeResponse.time() + "/" + runRceeResponse.wallTime(),
-                !runRceeResponse.exitCode().equals("0"),
+                rceeResponse.time() + "/" + rceeResponse.wallTime(),
+                !rceeResponse.exitCode().equals("0"),
                 ""
         );
     }
