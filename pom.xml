@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.soufrabi.nextcode.server</groupId>
-	<artifactId>ApiServer</artifactId>
+	<artifactId>api-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ApiServer</name>
 	<description>nextcode api server</description>
