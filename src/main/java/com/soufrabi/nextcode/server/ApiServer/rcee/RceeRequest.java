@@ -1,6 +1,6 @@
-package com.soufrabi.nextcode.server.ApiServer.editor.run;
+package com.soufrabi.nextcode.server.ApiServer.rcee;
 
-public record RunRceeRequest(
+public record RceeRequest(
         Integer languageId,
         String sourceCode,
         String stdin,
