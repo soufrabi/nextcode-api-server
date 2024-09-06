@@ -5,9 +5,7 @@ import org.springframework.data.jdbc.core.mapping.AggregateReference;
 
 public record ProblemTestCase(
         @Id
-        Long testCaseId,
-        String input,
-        String output,
+        Long problemTestCaseId,
         AggregateReference<Problem,Long> problemId
 ) {
 }
